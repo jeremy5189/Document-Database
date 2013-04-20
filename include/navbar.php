@@ -10,7 +10,7 @@
        <div class="nav-collapse collapse" id="main-menu">
         <ul class="nav" id="main-menu-left">
           <li><a href="add.php">新增資料</a></li>
-          <li><a href="viewer.php">管理資料</a></li>
+          <li><a href="manage.php">管理資料</a></li>
         </ul>
         <ul class="nav pull-right" id="main-menu-right">
           <li><a href="user.php">用戶</a></li>

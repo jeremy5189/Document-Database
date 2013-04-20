@@ -58,7 +58,7 @@
                 
                 echo '<dl class="dl-horizontal">';
                 
-                echo "<dt>編號：</dt><dd><a href=\"display.php?id=$data->id\">$data->id</a></dd>";
+                echo "<dt>檔案編號：</dt><dd><a href=\"display.php?id=$data->id\">$data->id</a></dd>";
                 
                 echo "<dt>班級姓名：</dt><dd>$data->studentClass  $data->studentName</dd>";
                 
@@ -154,44 +154,6 @@
       </div>
         
       <?php include('include/footer.php'); ?>
-      <script charset="utf-8">
-      	$(function() {
-            $('#input02').keydown( function(e) {  
-                if( e.keyCode == 13 ) {
-                    var inp = $('#input02').val();
-                    var walking = true;
-                    var selected = $('#multiSelect2').val(); 
-                    $("#multiSelect2 option").each(function() {
-                        if( !walking ) return false; 
-                        var current = $(this).val();
-                        if( current.indexOf(inp) !== -1 ) {
-                            if( selected != null ) selected.push(current);
-                            else selected = current;
-                            $("#multiSelect2").val(selected);
-                            scrollTo( $("#multiSelect2"), current);
-                            walking = false;
-                        }
-                     
-                    });
-                    $('#selectCount').html("共選中："+$("#multiSelect2 :selected").length+"項");
-                    return false;
-                }
-            });
-            $('#multiSelect2').click( function() {
-                $('#selectCount').html("共選中："+$("#multiSelect2 :selected").length+"項");
-            });
-      	});
-      	
-      	var scrollTo = function( $obj, value ) {
-            var arr = value.split('-');
-            var num = parseInt(arr[0],10);
-            if( num < 10 ) 
-                 $obj.scrollTop( 0 );
-            else
-                $obj.scrollTop( 17 * (num - 1) - 17 * 8);
-               	
-        }
-      </script>
    </div><!-- .container -->
   </body>
 </html>
