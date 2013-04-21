@@ -25,12 +25,12 @@ include('include/config.php');
       <div class="row-fluid">
         <div class="span12">
             <?php echo printNavbar("以學校查詢"); ?>
-                <form class="form-horizontal well" method="get" action="search.php">
+                <form class="form-horizontal well" id="schoolForm" method="get" action="search.php">
                 <fieldset>
                   <div class="control-group">
                     <label class="control-label" for="input02">搜尋</label>
                     <div class="controls">
-                      <input type="text" class="input-xlarge" id="input02">
+                      <input type="text" class="input-large" id="input02">
                       <p class="help-block">輸入關鍵字可快速找到項目</p>
                     </div>
                   </div>
@@ -50,8 +50,9 @@ include('include/config.php');
                   </div>
                 </fieldset>
             </form>
+        
              <?php echo printNavbar("以學群查詢"); ?>
-            <form class="form-horizontal well" method="get" action="search.php">
+            <form class="form-horizontal well" id="classForm" method="get" action="search.php">
                 <fieldset>
                   <div class="control-group">
                     <label class="control-label" for="multiSelect">列表</label>
@@ -98,6 +99,7 @@ include('include/config.php');
             $('#multiSelect2').click( function() {
                 $('#selectCount').html("共選中："+$("#multiSelect2 :selected").length+"項");
             });
+            //$('#classForm').height($('#schoolForm').height());
       	});
       	
       	var scrollTo = function( $obj, value ) {

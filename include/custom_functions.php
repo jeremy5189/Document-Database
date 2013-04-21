@@ -144,7 +144,7 @@ function NotFoundPage()
 {
     return "<html><head><title>Error</title></head>
             <body><center><h1>Page Not Found or Access Denied</h1></center>
-            <hr><center>".SYSTEM_NAME." / ".SYSTEM_VERSION."</center></body></html>";
+            <hr><center>".SYSTEM_NAME." V".SYSTEM_VERSION."</center></body></html>";
 }
 
 function ErrorAlert( $msg )

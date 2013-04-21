@@ -46,6 +46,24 @@ if( $ref_url == "") $ref_url = "none";
     <div class="container">
       <div class="content">
         <div class="row">
+            <!--[if lte IE 6]>
+              <div id="ie-warning"></div>
+               <style>.login-form {display: none;}</style>
+              <script type="text/javascript">
+              var message = "<?php echo SYSTEM_NAME; ?>: 不好意思，您的瀏覽器 IE6 已經過時。建議使用新版的瀏覽器  <a href='http://www.google.com/chrome'>Google Chrome</a>。",
+          div = $('<div id="ie-warning"></div>').html(message).css({
+                   'height': '50px',
+                   'line-height': '50px',
+                   'background-color':'#f9db17',
+                   'text-align':'center',
+                   'font-family':'Arial, Helvetica, sans-serif',
+                   'font-size':'12pt',
+                   'font-weight':'bold',
+                   'color':'black'
+                }).hide().find('a').css({color:'#333'}).end();
+      div.prependTo(document.body).slideDown(500);
+              </script>
+           <![endif]-->
             <?php if( $_SESSION['login_success'] == "false" ) {      
             $msg = ' : '. $_SESSION['login_error_msg'];
             echo '<div class="span4">
