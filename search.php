@@ -1,4 +1,6 @@
-<?php include('include/config.php'); 
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
 
 $sortMethod = array();
 $abort = false;
@@ -21,7 +23,7 @@ else
 ?><!DOCTYPE html>
 <html>
   <head>
-    <title>查詢資料 | <?php echo SYSTEM_NAME; ?></title>
+    <title>查詢結果 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     </head>

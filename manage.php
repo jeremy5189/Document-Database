@@ -1,4 +1,12 @@
-<?php include('include/config.php'); 
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
+
+if($_SESSION['authLevel'] < MANAGER_AUTH_LEVEL )
+{
+    echo NotFoundPage();
+    exit();
+}
 
 $sortMethod = array();
 
@@ -20,7 +28,7 @@ else
 <!DOCTYPE html>
 <html>
   <head>
-    <title>管理 | <?php echo SYSTEM_NAME; ?></title>
+    <title>管理 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     </head>
@@ -91,7 +99,12 @@ else
             }
             
             echo "</tbody></table>";
+            
+        
             mysql_close($link);
+            
+            
+            
             ?>
         </div>   
       </div>
@@ -100,17 +113,15 @@ else
       <script type="text/javascript" src="js/php.js"></script>
       <script charset="utf-8">
       	var comfirmDelete = function(id,title) {
-          	bootbox.confirm("確認要刪除公告："+base64_decode(title), function(result) {
+          	bootbox.confirm("確認要刪除資料："+base64_decode(title), function(result) {
                 if(result)
                 {
                     $.get('edit.php?opr=delete&id='+id, function(ret) {
                         if(ret == "ok") {
-                            bootbox.alert("公告刪除成功！",function() {
                                 window.location = "manage.php";
-                            }); 
                         }
                         else
-                            bootbox.alert("公告刪除失敗！");
+                            bootbox.alert("資料刪除失敗！");
                     });
                 }
             }); 

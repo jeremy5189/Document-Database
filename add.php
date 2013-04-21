@@ -1,8 +1,18 @@
-<?php include('include/config.php'); ?>
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
+
+if($_SESSION['authLevel'] < EDITOR_AUTH_LEVEL )
+{
+    echo NotFoundPage();
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>新增資料 | <?php echo SYSTEM_NAME; ?></title>
+    <title>新增資料 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     <style type="text/css" media="screen">
@@ -36,7 +46,7 @@
             <div class="controls">
               <select name="schoolClass">
                 <option value="null">------請選擇------</option>
-                <?php include('class_list.php'); ?> 
+                <?php include('include/class_list.php'); ?> 
               </select>
             </div>         
             </div>

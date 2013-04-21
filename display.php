@@ -1,8 +1,18 @@
-<?php include('include/config.php'); ?>
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
+
+if($_SESSION['authLevel'] < STUDENT_AUTH_LEVEL )
+{
+    echo NotFoundPage();
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>查詢 | <?php echo SYSTEM_NAME; ?></title>
+    <title>檢視檔案 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     <style type="text/css" media="screen">

@@ -1,8 +1,11 @@
-<?php include('include/config.php'); ?>
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>查詢 | <?php echo SYSTEM_NAME; ?></title>
+    <title>查詢 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     <style type="text/css" media="screen">
@@ -11,7 +14,7 @@
     	}
     	
     	#multiSelect2 {
-        	height: 300px;
+        	height: 250px;
     	}
     </style>
     </head>
@@ -21,7 +24,7 @@
                         
       <div class="row-fluid">
         <div class="span12">
-            <?php echo printNavbar("學校"); ?>
+            <?php echo printNavbar("以學校查詢"); ?>
                 <form class="form-horizontal well" method="get" action="search.php">
                 <fieldset>
                   <div class="control-group">
@@ -35,7 +38,7 @@
                     <label class="control-label" for="multiSelect2">列表</label>
                     <div class="controls">
                       <select multiple="multiple" name="schoolSelect[]" id="multiSelect2">
-                          <?php include('school_list.php'); ?>
+                          <?php include('include/school_list.php'); ?>
                       </select>
                       <p class="help-block" id="selectCount">共選中：0項</p>
                     </div>
@@ -47,14 +50,14 @@
                   </div>
                 </fieldset>
             </form>
-             <?php echo printNavbar("學群"); ?>
+             <?php echo printNavbar("以學群查詢"); ?>
             <form class="form-horizontal well" method="get" action="search.php">
                 <fieldset>
                   <div class="control-group">
                     <label class="control-label" for="multiSelect">列表</label>
                     <div class="controls">
                       <select multiple="multiple" name="schoolSelect[]" id="multiSelect">
-                        <?php include('class_list.php'); ?>              
+                        <?php include('include/class_list.php'); ?>              
                      </select>
                     </div>
                   </div>

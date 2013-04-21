@@ -18,13 +18,29 @@ $map = array(   1 => '大眾傳播學群',
                 16 => '數理化學群',
                 17 => '藝術學群',
                 18 => '醫藥衛生學群' );  
-                
-function printTextbox( $title, $name, $type = "input-xlarge", $ph = "", $required = "" )
+
+function echoActiveClass($requestUri)
+{
+    $serv = $_SERVER['REQUEST_URI'];
+    if( strpos($serv,'?') === false )
+        $current_file_name = basename($serv, ".php");
+    else {
+        $str = explode('?',$serv);
+        $current_file_name = basename($str[0], ".php");
+    }
+
+    if ($current_file_name == $requestUri)
+        return 'class="active"';
+    else
+        return '';
+}                
+         
+function printTextbox( $title, $name, $type = "input-xlarge", $ph = "", $required = "", $disable = "" )
 {
     echo "<div class=\"control-group\">          
             <label class=\"control-label\" for=\"$name\">$title</label>
             <div class=\"controls\">
-              <input type=\"text\" placeholder=\"$ph\" class=\"$type\" name=\"$name\" id=\"$name\" $required>
+              <input type=\"text\" placeholder=\"$ph\" class=\"$type\" name=\"$name\" id=\"$name\" $required $disable>
             </div>
           </div>";
 }
@@ -125,8 +141,8 @@ function escape_str($str)
 
 function NotFoundPage()
 {
-    return "<html><head><title>404 Not Found</title></head>
-            <body><center><h1>404 Not Found</h1></center>
+    return "<html><head><title>Error</title></head>
+            <body><center><h1>Page Not Found or Access Denied</h1></center>
             <hr><center>".SYSTEM_NAME." / ".SYSTEM_VERSION."</center></body></html>";
 }
 

@@ -1,4 +1,12 @@
-<?php include('include/config.php'); 
+<?php 
+include('login_checker.php');
+include('include/config.php'); 
+
+if($_SESSION['authLevel'] < MANAGER_AUTH_LEVEL )
+{
+    echo NotFoundPage();
+    exit();
+}
     
 if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GET['opr'] == 'delete' )  
 {
@@ -21,7 +29,7 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
 <!DOCTYPE html>
 <html>
   <head>
-    <title>修改資料 | <?php echo SYSTEM_NAME; ?></title>
+    <title>編輯資料 - <?php echo SYSTEM_NAME; ?></title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <?php include('include/header.php'); ?>
     <style type="text/css" media="screen">
@@ -63,7 +71,7 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
           else if( isset($_GET['result']) && $_GET['result'] == 'error' ) 
             echo ErrorAlert('資料庫發生一些問題，請檢查設定或稍後重試！');
         
-          printTextbox( '編號', 'id', 'input-xlarge','', 'required');
+          printTextbox( '編號', 'id', 'input-xlarge','', 'required','disabled');
           printTextbox( '年度', 'year', 'input-xlarge', '102');
           ?>
           
@@ -93,7 +101,6 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
           ?>          
           <div class="control-group">
             <label class="control-label" >學測成績</label>
-            <div class="controls">
              <div class="controls">
               <input type="text" id="g1" name="studentGradeChinese" class="input-small" placeholder="國文" required="">
               <input type="text" id="g2" name="studentGradeEnglish" class="input-small" placeholder="英文" required="">
@@ -101,7 +108,6 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
               <input type="text" id="g4" name="studentGradeSocial" class="input-small" placeholder="社會" required="">
               <input type="text" id="g5" name="studentGradeScience" class="input-small" placeholder="自然" required="">
               <input type="text" id="gt" name="studentGradeTotal" class="input-small" placeholder="總分" required="">
-            </div>
             </div>
           </div>
             
