@@ -52,7 +52,7 @@ else if( $opr == "add" )
         if($key != "opr")
         {
             $col .= "`$key`,";
-            $val .= "'$value',";
+            $val .= "'".escape_str($value)."',";
         }
     }
     

@@ -72,6 +72,7 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
             echo ErrorAlert('資料庫發生一些問題，請檢查設定或稍後重試！');
         
           printTextbox( '編號', 'id', 'input-xlarge','', 'required','disabled');
+          echo "<input type=\"hidden\" id=\"hid\" name=\"id\" value=\"\">";
           printTextbox( '年度', 'year', 'input-xlarge', '102');
           ?>
           
@@ -80,7 +81,7 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
             <div class="controls">
               <select id="schoolClass" name="schoolClass" required>
                 <option value="null">------請選擇------</option>
-                <?php include('class_list.php'); ?> 
+                <?php include('include/class_list.php'); ?> 
               </select>
             </div>         
             </div>
@@ -102,12 +103,12 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
           <div class="control-group">
             <label class="control-label" >學測成績</label>
              <div class="controls">
-              <input type="text" id="g1" name="studentGradeChinese" class="input-small" placeholder="國文" required="">
-              <input type="text" id="g2" name="studentGradeEnglish" class="input-small" placeholder="英文" required="">
-              <input type="text" id="g3" name="studentGradeMath" class="input-small" placeholder="數學" required="">
-              <input type="text" id="g4" name="studentGradeSocial" class="input-small" placeholder="社會" required="">
-              <input type="text" id="g5" name="studentGradeScience" class="input-small" placeholder="自然" required="">
-              <input type="text" id="gt" name="studentGradeTotal" class="input-small" placeholder="總分" required="">
+              <input type="text" id="studentGradeChinese" name="studentGradeChinese" class="g1 input-small" placeholder="國文" required="">
+              <input type="text" id="studentGradeEnglish" name="studentGradeEnglish" class="g2 input-small" placeholder="英文" required="">
+              <input type="text" id="studentGradeMath" name="studentGradeMath" class="g3 input-small" placeholder="數學" required="">
+              <input type="text" id="studentGradeSocial" name="studentGradeSocial" class="g4 input-small" placeholder="社會" required="">
+              <input type="text" id="studentGradeScience" name="studentGradeScience" class="g5 input-small" placeholder="自然" required="">
+              <input type="text" id="studentGradeTotal" name="studentGradeTotal" class="gt input-small" placeholder="總分" required="">
             </div>
           </div>
             
@@ -139,11 +140,11 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
       	}
       	      
       	$(function() {
-          	$('#gt').focus( function() {
+          	$('.gt').focus( function() {
                 var sum = 0;
                 for( var i = 1; i <= 5; i++ )
-                    sum += parseInt($('#g' + i).val(),10);
-                $('#gt').val(sum);
+                    sum += parseInt($('.g' + i).val(),10);
+                $('.gt').val(sum);
           	});
           	$('.close').click( function() {
                 $('.alert').remove();
@@ -152,8 +153,12 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
                 
             foreach( $data as $key => $val )    
             {
-                if(!is_numeric($key))
+                if(!is_numeric($key) && $key != 'id')
                     echo "displayValue('$key','".base64_encode($val)."');\n";
+                else if(!is_numeric($key) && $key == 'id') {
+                    echo "displayValue('h$key','".base64_encode($val)."');\n";
+                    echo "displayValue('$key','".base64_encode($val)."');\n";
+                }
             } 
                 
             ?>

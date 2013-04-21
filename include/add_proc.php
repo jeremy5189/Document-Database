@@ -30,7 +30,7 @@ foreach( $_POST as $key => $value )
 }
 
 $createTime = date("Y-m-d H:i:s");
-$createUser = 'admin';
+$createUser = $_SESSION['username']."(".$_SESSION['displayName'].")";
 
 $sql = $sql . $col . '`createTime`,`createUser`) VALUE ' . $val . "'$createTime','$createUser');";
 

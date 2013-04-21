@@ -87,7 +87,7 @@ else
                 if($data->lastEditTime == '0000-00-00 00:00:00')
                     echo "<th>從未</th>";
                 else
-                    echo "<th><a href=\"#\" title=\"$data->lastEditTime\">".time2str(strtotime($data->lastEditTime))."</a></th>";
+                    echo "<th><a href=\"#\" title=\"$data->lastEditTime By $data->lastEditUser\">".time2str(strtotime($data->lastEditTime))."</a></th>";
                 
                 $info = base64_encode("$data->id $data->schoolName $data->schoolDepart");    
                 echo "<th><div class=\"btn-group\">

@@ -1,9 +1,10 @@
 <?php
+session_start();
 include('config.php');
 
-if( !isset($_POST['id']) && !is_numeric($_POST['id']) )
+if( !(isset($_POST['id']) && is_numeric($_POST['id'])) )
 {
-     header("Location: ../add.php?result=error");
+     header("Location: ../edit.php?result=error");
      exit();    
 }
 
@@ -19,13 +20,14 @@ foreach( $_POST as $key => $value )
     $sql .= sprintf("`$key` = '%s', ",escape_str($value));
 }
 
-$lastEditUser = 'admin';
-$sql .= "`lastEditUser` = '$lastEditUser' WHERE `id` = %s;";
+$lastEditUser = $_SESSION['username']."(".$_SESSION['displayName'].")";
+$time = date("Y-m-d H:i:s");
+$sql .= "`lastEditUser` = '$lastEditUser', `lastEditTime` = '$time' WHERE `id` = %s;";
 $sql = sprintf($sql, escape_str($_POST['id']));
 
-echo $sql;
-
 $result = mysql_query($sql,$link);
+
+echo $sql;
 
 if($result)
     header("Location: ../manage.php?result=success");
