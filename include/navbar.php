@@ -18,6 +18,7 @@
           <li <?php echo echoActiveClass("user"); ?>><a href="user.php">管理用戶</a></li>
           <?php } ?>
           <li <?php echo echoActiveClass("analysis"); ?>><a href="analysis.php">統計分析</a></li>
+	   <li <?php echo echoActiveClass("output"); ?>><a href="output.php">輸出</a></li>
         </ul>
         <ul class="nav pull-right" id="main-menu-right">
           <li><a href="#"><?php echo $_SESSION['displayName']; ?></a></li>
