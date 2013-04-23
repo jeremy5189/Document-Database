@@ -1,6 +1,5 @@
 <?php
-session_start();
-include('config.php');
+include('../include/config.php');
 
 $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 mysql_select_db(DB_NAME); 
@@ -31,15 +30,16 @@ foreach( $_POST as $key => $value )
 }
 
 $createTime = date("Y-m-d H:i:s");
-$createUser = $_SESSION['username']."(".$_SESSION['displayName'].")";
+//$createUser = $_SESSION['username']."(".$_SESSION['displayName'].")";
 
-$sql = $sql . $col . '`createTime`,`createUser`) VALUE ' . $val . "'$createTime','$createUser');";
-
+//$sql = $sql . $col . '`createTime`,`createUser`) VALUE ' . $val . "'$createTime','$createUser');";
+$sql = $sql . $col . '`createTime`) VALUE ' . $val . "'$createTime');";
+//echo $sql;
 $result = mysql_query($sql,$link);
 if($result)
-    header("Location: ../add.php?result=success&lastid=$id");
+    echo "true"; //header("Location: ../add.php?result=success&lastid=$id");
 else
-    header("Location: ../add.php?result=error");
+    echo "false"; //header("Location: ../add.php?result=error");
 mysql_close($link);
 
 function fill_zero_2( $num )

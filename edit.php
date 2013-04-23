@@ -71,8 +71,8 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
           else if( isset($_GET['result']) && $_GET['result'] == 'error' ) 
             echo ErrorAlert('資料庫發生一些問題，請檢查設定或稍後重試！');
         
-          printTextbox( '編號', 'id', 'input-xlarge','', 'required','disabled');
-          echo "<input type=\"hidden\" id=\"hid\" name=\"id\" value=\"\">";
+          printTextbox( '編號', 'id', 'input-xlarge','', 'required');
+          //echo "<input type=\"hidden\" id=\"hid\" name=\"id\" value=\"\">";
           printTextbox( '年度', 'year', 'input-xlarge', '102');
           ?>
           
