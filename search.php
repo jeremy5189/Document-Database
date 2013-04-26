@@ -106,7 +106,11 @@ else
                 echo "<th>$data->id</th>";
                 echo "<th>".classlink($data->schoolClass,$map[$data->schoolClass])."</th>";
                 echo "<th>".schoolLink($data->schoolName)." $data->schoolDepart</th>";
-                echo "<th>$data->studentClass $data->studentName</th>";
+                if( $_SESSION['authLevel'] <= GUEST_AUTH_LEVEL ) 
+                    $name = substr($data->studentName, 0, 3)."OO";
+                else
+                    $name = $data->studentName;
+                echo "<th>$data->studentClass $name</th>";
                 echo "<th><a class=\"btn btn-primary btn-small\" href=\"display.php?id=$data->id\">View</a></th>";
                 echo "</tr>";   
                 $hasOutput = true;   
