@@ -82,7 +82,9 @@ else
                 echo "<tr>";
                 echo "<th>$data->id</th>";
                 echo "<th>".classlink($data->schoolClass,$map[$data->schoolClass])."</th>";
-                echo "<th>".schoolLink($data->schoolName)." $data->schoolDepart</th>";
+                $ret = "";
+                if($data->schoolResult != null ) $ret = "($data->schoolResult)";
+                echo "<th>".schoolLink($data->schoolName)." $data->schoolDepart $ret</th>";
                 echo "<th>$data->studentClass $data->studentName</th>";
                 if($data->lastEditTime == '0000-00-00 00:00:00')
                     echo "<th>從未</th>";

@@ -25,7 +25,7 @@ include('include/config.php');
             mysql_select_db(DB_NAME); 
             mysql_query("SET NAMES UTF8;");
             
-            $sql = "SELECT `schoolName`, COUNT(*) AS amount FROM `$TABLE_INTERVIEW` GROUP BY `schoolName` ORDER BY `schoolName`;";
+            $sql = "SELECT `schoolName`, COUNT(*) AS amount FROM `$TABLE_INTERVIEW` GROUP BY `schoolName` ORDER BY `amount` desc;";
             
             $result = mysql_query($sql,$link);
             
