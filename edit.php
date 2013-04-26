@@ -91,7 +91,7 @@ if( isset($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['opr']) && $_GE
          
           printTextbox( '校名', 'schoolName', 'input-xlarge', '', 'required');
           printTextbox( '校系', 'schoolDepart', 'input-xlarge', '', 'required');
-          printTextbox( '面試結果', 'schoolResult','input-xlarge', '正取1');
+          printTextbox( '面試結果', 'schoolResult','input-xlarge', '');
           printTextbox( '學生班級', 'studentClass','input-xlarge', '', 'required');
           printTextbox( '學生姓名', 'studentName','input-xlarge', '', 'required');
           printTextbox( '學生手機', 'studentPhone');

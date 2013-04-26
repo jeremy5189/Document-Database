@@ -21,8 +21,8 @@ if( isset($_GET['sort']) && array_key_exists($_GET['sort'], $sortMethod) )
 }
 else
 {
-    $sortMethod['id'] = 'active';
-    $selected = 'id';
+    $sortMethod['lastEditTime'] = 'active';
+    $selected = 'lastEditTime';
 }
 ?>
 <!DOCTYPE html>
