@@ -139,6 +139,11 @@ else
                     else
                         echo '<li><a href="?page='.$i.'">'.$i.'</a></li>';        
                 }
+		else if( ($page - $i) > 3 )
+		{
+			echo '<li><a href="?page='.$i.'">...</a></li>';
+			break; 
+		}
             }
             echo '<li><a href="?page='.($page+1).'">&gt;</a></li>';
             echo '<li><a href="?page='.($pages).'" title="到第'.$pages.'頁">&gt;&gt;</a></li>';
