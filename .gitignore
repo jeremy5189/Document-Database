@@ -2,3 +2,5 @@
 *.swp
 *.txt
 *.sh
+include/config.php
+*~
